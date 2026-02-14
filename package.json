@@ -1,0 +1,11 @@
+{
+  "name": "html-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/tailwind.css -o ./css/main.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
