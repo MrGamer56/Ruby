@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Unfold | For My Love</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Lato:wght@300;400;700;900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <script type="module" async
+        src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fvalentine3423back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.17"></script>
+    <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2"></script>
+</head>
+
+<body class="bg-black text-milk overflow-x-hidden">
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts-container fixed inset-0 pointer-events-none z-0" aria-hidden="true">
+        <div class="floating-heart parallax-layer" data-speed="0.3" style="left: 10%; animation-delay: 0s;">❤</div>
+        <div class="floating-heart parallax-layer" data-speed="0.5" style="left: 25%; animation-delay: 2s;">💕</div>
+        <div class="floating-heart parallax-layer" data-speed="0.4" style="left: 45%; animation-delay: 4s;">💖</div>
+        <div class="floating-heart parallax-layer" data-speed="0.6" style="left: 65%; animation-delay: 1s;">💗</div>
+        <div class="floating-heart parallax-layer" data-speed="0.35" style="left: 80%; animation-delay: 3s;">💝</div>
+        <div class="floating-heart parallax-layer" data-speed="0.45" style="left: 90%; animation-delay: 5s;">❤</div>
+        <div class="floating-heart parallax-layer" data-speed="0.55" style="left: 15%; animation-delay: 6s;">💗</div>
+        <div class="floating-heart parallax-layer" data-speed="0.4" style="left: 55%; animation-delay: 7s;">💕</div>
+        <div class="floating-heart parallax-layer" data-speed="0.5" style="left: 75%; animation-delay: 8s;">💖</div>
+    </div>
+
+    <!-- Envelope Animation Stage -->
+    <section class="envelope-stage relative w-full h-screen overflow-hidden">
+        <div class="envelope-container absolute inset-0 flex items-center justify-center perspective-3d">
+            <!-- 3D Envelope -->
+            <div class="envelope transform-3d">
+                <!-- Envelope Back (visible after flip) -->
+                <div class="envelope-back absolute inset-0 rounded-lg border-2 border-blush/20">
+                    <svg class="w-full h-full" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern id="paper-grain" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                                <circle cx="2" cy="2" r="0.5" fill="rgba(255,229,229,0.05)" />
+                                <circle cx="12" cy="8" r="0.3" fill="rgba(255,229,229,0.03)" />
+                                <circle cx="18" cy="15" r="0.4" fill="rgba(255,229,229,0.04)" />
+                            </pattern>
+                        </defs>
+                        <rect width="400" height="300" fill="#FFF8F0" stroke="#FFE5E5" stroke-width="2" />
+                        <rect width="400" height="300" fill="url(#paper-grain)" />
+                        <!-- Wax Seal -->
+                        <circle cx="200" cy="150" r="30" fill="#8B1538" opacity="0.9" />
+                        <text x="200" y="160" font-family="Playfair Display" font-size="24" fill="#FFF8F0"
+                            text-anchor="middle" font-weight="700">V</text>
+                    </svg>
+                </div>
+
+                <!-- Envelope Top Flap (hinges from top) -->
+                <div class="envelope-flap absolute inset-x-0 top-0 h-1/2 origin-top">
+                    <svg class="w-full h-full" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg"
+                        preserveAspectRatio="none">
+                        <defs>
+                            <pattern id="liner-pattern" x="0" y="0" width="40" height="40"
+                                patternUnits="userSpaceOnUse">
+                                <line x1="0" y1="20" x2="40" y2="20" stroke="#FFE5E5" stroke-width="0.5"
+                                    opacity="0.3" />
+                                <line x1="20" y1="0" x2="20" y2="40" stroke="#FFE5E5" stroke-width="0.5"
+                                    opacity="0.3" />
+                            </pattern>
+                        </defs>
+                        <polygon points="0,0 400,0 200,150" fill="#FFF8F0" stroke="#FFE5E5" stroke-width="2" />
+                        <polygon points="0,0 400,0 200,150" fill="url(#liner-pattern)" />
+                    </svg>
+                </div>
+
+                <!-- Letter Inside Envelope -->
+                <div class="letter-container absolute inset-0 flex items-end justify-center pb-8 pointer-events-none">
+                    <div
+                        class="letter w-11/12 h-4/5 bg-milk rounded-t-lg shadow-2xl border-2 border-blush/30 overflow-hidden">
+                        <!-- Letter content will be revealed after morph -->
+                        <div class="letter-preview h-full flex items-center justify-center">
+                            <svg width="60" height="60" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                                    fill="#8B1538" opacity="0.2" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div
+            class="scroll-indicator absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 sm:gap-3 text-blush/60">
+            <span
+                class="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] font-lato font-light">Scroll
+                to Unfold</span>
+            <div class="w-px h-12 sm:h-16 bg-gradient-to-b from-blush/60 to-transparent animate-pulse"></div>
+        </div>
+    </section>
+
+    <!-- Expanded Letter Content (becomes full-screen background after morph) -->
+    <section class="letter-content opacity-0 min-h-screen bg-milk relative overflow-hidden">
+        <!-- Decorative Background Pattern -->
+        <div class="absolute inset-0 opacity-5 pointer-events-none parallax-bg" data-speed="0.2" aria-hidden="true">
+            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="hearts-bg" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                        <text x="20" y="40" font-size="24" fill="#8B1538" opacity="0.3">❤</text>
+                        <text x="60" y="80" font-size="18" fill="#FFE5E5" opacity="0.4">💕</text>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#hearts-bg)" />
+            </svg>
+        </div>
+
+        <!-- Hero Section: For [Partner Name] -->
+        <div
+            class="hero-section relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-12 sm:py-16 md:py-20 text-center reveal-content zoom-section">
+            <div class="max-w-4xl w-full space-y-8 sm:space-y-10 md:space-y-12">
+                <div class="space-y-4 sm:space-y-5 md:space-y-6">
+                    <p
+                        class="text-xs sm:text-sm uppercase tracking-[0.3em] sm:tracking-[0.4em] text-velvet/60 font-lato font-light px-2">
+                        A Love Letter For</p>
+                    <h1
+                        class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 2xl:text-9xl font-playfair font-bold tracking-tight leading-none text-velvet heart-decoration px-2">
+                        My Dearest<br>
+                        <span class="italic font-light">Ruhi</span>
+                    </h1>
+                    <p
+                        class="text-base sm:text-lg md:text-xl text-velvet/70 font-lato max-w-2xl mx-auto leading-relaxed px-4">
+                        Every moment with you is a page in our story. This is our journey, unfolding one memory at a
+                        time. 💕
+                    </p>
+                    <div class="flex justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
+                        <span class="text-2xl sm:text-3xl md:text-4xl animate-bounce parallax-decoration"
+                            data-speed="0.7" style="animation-delay: 0s;">💖</span>
+                        <span class="text-2xl sm:text-3xl md:text-4xl animate-bounce parallax-decoration"
+                            data-speed="0.8" style="animation-delay: 0.2s;">✨</span>
+                        <span class="text-2xl sm:text-3xl md:text-4xl animate-bounce parallax-decoration"
+                            data-speed="0.7" style="animation-delay: 0.4s;">💕</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Section: Relationship Milestones -->
+        <div class="timeline-section relative z-10 py-12 sm:py-16 md:py-20 px-4 sm:px-6 reveal-content zoom-section">
+            <div class="max-w-4xl mx-auto w-full">
+                <h2
+                    class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-center mb-12 sm:mb-16 md:mb-20 text-velvet heart-decoration px-2">
+                    Our Journey</h2>
+
+                <div class="timeline-container relative">
+                    <!-- Vertical Line -->
+                    <div class="timeline-line absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-velvet/30 via-blush/50 to-velvet/30 -translate-x-1/2 parallax-line"
+                        data-speed="0.15"></div>
+
+                    <!-- Timeline Events -->
+
+                    <div class="timeline-event flex items-center mb-12 sm:mb-14 md:mb-16 relative">
+                        <div class="timeline-content w-full sm:w-5/12 text-center sm:text-right pr-0 sm:pr-8">
+                            <h3 class="text-xl sm:text-2xl font-playfair font-semibold text-velvet mb-2">First time we
+                                spoke</h3>
+                            <p class="text-xs sm:text-sm text-velvet/70 font-lato mb-1">September 7, 2023</p>
+                            <p class="text-sm sm:text-base text-velvet/60 font-lato leading-relaxed">
+                                Your words carried pain, but your heart was still beautiful. That’s when our story
+                                quietly began.
+                            </p>
+                        </div>
+                        <div class="timeline-dot absolute left-1/2 sm:left-1/2 -translate-x-1/2 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-velvet border-4 border-milk shadow-lg z-10 parallax-dot"
+                            data-speed="0.25"></div>
+                        <div class="hidden sm:block w-5/12"></div>
+                    </div>
+
+                    <div class="timeline-event flex items-center mb-12 sm:mb-14 md:mb-16 relative flex-row-reverse">
+                        <div class="timeline-content w-full sm:w-5/12 text-center sm:text-left pl-0 sm:pl-8">
+                            <h3 class="text-xl sm:text-2xl font-playfair font-semibold text-velvet mb-2">First "I Love
+                                You !"</h3>
+                            <p class="text-xs sm:text-sm text-velvet/70 font-lato mb-1">September 25, 2023</p>
+                            <p class="text-sm sm:text-base text-velvet/60 font-lato leading-relaxed">The night before my
+                                exam, when anxiety should’ve been the loudest thing in the room, you said “I love you.”
+                                Lying there in the quiet dark, I realized I was feeling something far bigger than stress
+                                — I was feeling us..</p>
+                        </div>
+                        <div class="timeline-dot absolute left-1/2 sm:left-1/2 -translate-x-1/2 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-velvet border-4 border-milk shadow-lg z-10 parallax-dot"
+                            data-speed="0.25"></div>
+                        <div class="hidden sm:block w-5/12"></div>
+                    </div>
+
+                    <div class="timeline-event flex items-center mb-12 sm:mb-14 md:mb-16 relative">
+                        <div class="timeline-content w-full sm:w-5/12 text-center sm:text-right pr-0 sm:pr-8">
+                            <h3 class="text-xl sm:text-2xl font-playfair font-semibold text-velvet mb-2">First Date</h3>
+                            <p class="text-xs sm:text-sm text-velvet/70 font-lato mb-1">February 11, 2025</p>
+                            <p class="text-sm sm:text-base text-velvet/60 font-lato leading-relaxed">Movies at the
+                                Cinepolis. You wore that college uniform shirt. I knew right then.</p>
+                        </div>
+                        <div class="timeline-dot absolute left-1/2 sm:left-1/2 -translate-x-1/2 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-velvet border-4 border-milk shadow-lg z-10 parallax-dot"
+                            data-speed="0.25"></div>
+                        <div class="hidden sm:block w-5/12"></div>
+                    </div>
+
+                    <div class="timeline-event flex items-center mb-12 sm:mb-14 md:mb-16 relative flex-row-reverse">
+                        <div class="timeline-content w-full sm:w-5/12 text-center sm:text-left pl-0 sm:pl-8">
+                            <h3 class="text-xl sm:text-2xl font-playfair font-semibold text-velvet mb-2">First IceCream
+                                Together</h3>
+                            <p class="text-xs sm:text-sm text-velvet/70 font-lato mb-1">August 25, 2025</p>
+                            <p class="text-sm sm:text-base text-velvet/60 font-lato leading-relaxed">The ice cream
+                                melted faster than we could eat it, but that day stayed frozen in my heart forever.</p>
+                        </div>
+                        <div class="timeline-dot absolute left-1/2 sm:left-1/2 -translate-x-1/2 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-velvet border-4 border-milk shadow-lg z-10 parallax-dot"
+                            data-speed="0.25"></div>
+                        <div class="hidden sm:block w-5/12"></div>
+                    </div>
+
+                    <div class="timeline-event flex items-center relative">
+                        <div class="timeline-content w-full sm:w-5/12 text-center sm:text-right pr-0 sm:pr-8">
+                            <h3 class="text-xl sm:text-2xl font-playfair font-semibold text-velvet mb-2">Today & Forever
+                            </h3>
+                            <p class="text-xs sm:text-sm text-velvet/70 font-lato mb-1">February 14, 2026</p>
+                            <p class="text-sm sm:text-base text-velvet/60 font-lato leading-relaxed">Every day with you
+                                is a new adventure. Here's to a lifetime of love.</p>
+                        </div>
+                        <div class="timeline-dot absolute left-1/2 sm:left-1/2 -translate-x-1/2 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-velvet border-4 border-milk shadow-lg z-10 animate-pulse parallax-dot"
+                            data-speed="0.25"></div>
+                        <div class="hidden sm:block w-5/12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gallery Section: Polaroid-Style Masonry Grid -->
+        <div class="gallery-section relative z-10 py-12 sm:py-16 md:py-20 px-4 sm:px-6 reveal-content zoom-section">
+            <div class="max-w-6xl mx-auto w-full">
+                <h2
+                    class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-center mb-12 sm:mb-16 md:mb-20 text-velvet heart-decoration px-2">
+                    Our Memories</h2>
+
+                <!-- Heart-shaped flex layout -->
+                <div class="heart-grid">
+                    <!-- Row 1: Top lobes - 2 cards with gap -->
+                    <div class="heart-row heart-row-lobes">
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">💕</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                You stole<br>
+                                                <span class="text-[0.7rem]">my heart</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <img src="./public/assets/1.jpg" alt="Romantic couple"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Beach sunset
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">💃</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                Dancing<br>
+                                                <span class="text-[0.7rem]">through life</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                                                <source src="./public/assets/2.mp4" type="video/mp4">
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">First dance
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Row 2: Upper middle - 5 cards -->
+                    <div class="heart-row">
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">☕</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                You're my<br>
+                                                <span class="text-[0.7rem]">caffeine</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <img src="./public/assets/3.jpg" alt="Coffee date"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Coffee date
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">🎭</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                Every moment<br>
+                                                <span class="text-[0.7rem]">is magical</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <img src="./public/assets/4.jpg" alt="Theater night"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Theater night
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">🌃</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                You light up<br>
+                                                <span class="text-[0.7rem]">my world</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <img src="./public/assets/5.jpg" alt="Library date"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Library date
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">📚</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                You're my<br>
+                                                <span class="text-[0.7rem]">favorite story</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <img src="./public/assets/6.jpg" alt="Art gallery"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Art gallery
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">⛰️</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                Life's a climb<br>
+                                                <span class="text-[0.7rem]">worth it with you</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <img src="./public/assets/7.jpg" alt="Mountain adventure"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Mountain
+                                            adventure</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Row 3: Middle - 5 cards -->
+                    <div class="heart-row">
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">🎵</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                You're my<br>
+                                                <span class="text-[0.7rem]">favorite song</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                                                <source src="./public/assets/8.mp4" type="video/mp4">
+                                            </video>
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Concert</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">🍦</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                Sweet like<br>
+                                                <span class="text-[0.7rem]">summer</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <img src="./public/assets/9.jpg" alt="Ice cream date"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Ice cream
+                                            date</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">🎢</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                Life's a ride<br>
+                                                <span class="text-[0.7rem]">with you</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <img src="./public/assets/10.jpg" alt="Amusement park"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Amusement
+                                            park</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">🎬</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                Our love<br>
+                                                <span class="text-[0.7rem]">is a movie</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <img src="./public/assets/11.jpg" alt="Movie night"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Movie night
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">🏠</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                Home is<br>
+                                                <span class="text-[0.7rem]">with you</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <img src="./public/assets/12.jpg" alt="Our home"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Our home</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- Row 4: Tapering - 4 cards -->
+                    <div class="heart-row">
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">🦋</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                You give me<br>
+                                                <span class="text-[0.7rem]">butterflies</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <img src="./public/assets/13.jpg" alt="Butterfly garden"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Butterfly
+                                            garden</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">🌟</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                You're my<br>
+                                                <span class="text-[0.7rem]">shining star</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <img src="./public/assets/14.jpg" alt="Stargazing"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Stargazing
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">🎁</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                You're my<br>
+                                                <span class="text-[0.7rem]">greatest gift</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <img src="./public/assets/15.jpg" alt="Special moment"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Special
+                                            moment</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">🌹</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                Forever<br>
+                                                <span class="text-[0.7rem]">and always</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <img src="./public/assets/16.jpg" alt="Rose"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Forever</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Row 5: Lower taper - 2 cards -->
+                    <div class="heart-row">
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">💍</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                Together<br>
+                                                <span class="text-[0.7rem]">always</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <video src="./public/assets/17.mp4" class="w-full h-full object-cover" autoplay
+                                                muted loop playsinline>
+                                            </video>
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Together</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">🌙</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                You're my<br>
+                                                <span class="text-[0.7rem]">moonlight</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <video src="./public/assets/18.mp4" class="w-full h-full object-cover" autoplay
+                                                muted loop playsinline>
+                                            </video>
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">
+                                            Moonlight walk
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 6: Bottom point - 1 card -->
+                    <div class="heart-row">
+                        <div class="heart-card">
+                            <div class="flip-card-container perspective-1000 cursor-pointer"
+                                onclick="this.classList.toggle('flipped')">
+                                <div
+                                    class="flip-card-inner relative w-full h-full transition-transform duration-700 transform-style-3d">
+                                    <div
+                                        class="flip-card-front absolute w-full h-full bg-white shadow-xl backface-hidden flex items-center justify-center">
+                                        <div class="text-center">
+                                            <div class="text-xl mb-1 animate-pulse">❤️</div>
+                                            <p class="font-playfair text-[0.85rem] text-velvet italic leading-tight">
+                                                Forever<br>
+                                                <span class="text-[0.7rem]">and always yours</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="flip-card-back absolute w-full h-full bg-white shadow-xl backface-hidden rotateY-180">
+                                        <div class="polaroid-image bg-blush/20 overflow-hidden">
+                                            <img src="./public/assets/19.jpg" alt="Forever yours"
+                                                class="w-full h-full object-cover">
+                                        </div>
+                                        <p class="text-center font-lato text-[10px] text-velvet/70 italic">Forever yours
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Closing Message -->
+        <div
+            class="closing-section relative z-10 py-16 sm:py-24 md:py-32 px-4 sm:px-6 text-center reveal-content zoom-section">
+            <div class="max-w-3xl mx-auto w-full space-y-6 sm:space-y-7 md:space-y-8">
+                <h2
+                    class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-playfair font-bold text-velvet italic heart-decoration px-2">
+                    Forever Yours</h2>
+                <p class="text-lg sm:text-xl md:text-2xl text-velvet/70 font-lato leading-relaxed px-4">
+                    Every day with you is a gift. Thank you for being my partner, my best friend, my everything. 💝
+                </p>
+                <div class="pt-6 sm:pt-7 md:pt-8 flex justify-center gap-4 sm:gap-5 md:gap-6">
+                    <span class="text-3xl sm:text-4xl md:text-5xl"
+                        style="animation: cute-bounce 2s ease-in-out infinite; animation-delay: 0s;">💕</span>
+                    <svg class="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto text-velvet/30" viewBox="0 0 24 24"
+                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                    </svg>
+                    <span class="text-3xl sm:text-4xl md:text-5xl"
+                        style="animation: cute-bounce 2s ease-in-out infinite; animation-delay: 1s;">💖</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+
+        <!-- Valentine Question -->
+        <div
+            class="valentine-question-section relative z-10 py-16 sm:py-24 md:py-32 px-4 sm:px-6 text-center reveal-content zoom-section">
+            <div class="max-w-2xl mx-auto w-full space-y-8 sm:space-y-10 md:space-y-12">
+                <h2
+                    class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-velvet mb-8 sm:mb-12 md:mb-16 heart-decoration px-2">
+                    Will you be my Valentine?
+                </h2>
+
+                <div
+                    class="button-container relative flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 min-h-[140px] sm:min-h-[120px] md:min-h-[100px] px-2">
+                    <!-- Yes Button -->
+                    <button id="yes-button"
+                        class="valentine-btn yes-btn bg-velvet text-milk px-6 sm:px-8 md:px-12 py-2.5 sm:py-3 md:py-4 rounded-full font-lato font-bold text-sm sm:text-base md:text-lg hover:bg-velvet/90 transform hover:scale-110 transition-all duration-300 shadow-2xl border-4 border-velvet/20 relative z-10 w-full sm:w-auto"
+                        aria-label="Click Yes to be my Valentine">
+                        Yes! 💖
+                    </button>
+
+                    <!-- No Button (moves on hover, stays visible with higher z-index) -->
+                    <button id="no-button"
+                        class="valentine-btn no-btn bg-white text-velvet px-6 sm:px-8 md:px-12 py-2.5 sm:py-3 md:py-4 rounded-full font-lato font-bold text-sm sm:text-base md:text-lg border-4 border-velvet/30 shadow-2xl transition-all duration-200 z-50 w-full sm:w-auto sm:absolute"
+                        style="left: 50%; top: auto; bottom: 0; transform: translateX(-50%);"
+                        aria-label="No button that moves away when you try to click it">
+                        No
+                    </button>
+                </div>
+
+                <!-- Hidden celebration message -->
+                <div id="celebration-message" class="hidden mt-8 sm:mt-10 md:mt-12 space-y-3 sm:space-y-4 px-4">
+                    <div class="text-4xl sm:text-5xl md:text-6xl animate-bounce">💕</div>
+                    <p class="text-2xl sm:text-3xl md:text-4xl font-playfair font-bold text-velvet italic">I knew you'd
+                        say yes!</p>
+                    <p class="text-base sm:text-lg text-velvet/70 font-lato">You've made me the happiest person alive!
+                        💖</p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // GSAP ScrollTrigger Setup
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Envelope Animation Timeline
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".envelope-stage",
+                    start: "top top",
+                    end: "+=400%",
+                    scrub: 1,
+                    pin: true,
+                    onUpdate: (self) => {
+                        const progress = self.progress;
+
+                        // Fade out scroll indicator early
+                        if (progress > 0.05) {
+                            gsap.to('.scroll-indicator', { opacity: 0, duration: 0.3 });
+                        }
+                    }
+                }
+            });
+
+            // Step A: Flip envelope (0-20%)
+            tl.to(".envelope", {
+                rotateY: 180,
+                duration: 1,
+                ease: "power2.inOut"
+            }, 0);
+
+            // Step B: Open top flap (20-40%)
+            tl.to(".envelope-flap", {
+                rotateX: -180,
+                duration: 1,
+                ease: "power2.inOut"
+            }, 1);
+
+            // Step C: Slide letter out (40-60%)
+            tl.to(".letter-container", {
+                y: "-120%",
+                duration: 1,
+                ease: "power2.out"
+            }, 2);
+
+            // Step D: Morph - Fade envelope, expand letter (60-100%)
+            tl.to(".envelope", {
+                opacity: 0,
+                y: 100,
+                scale: 0.8,
+                duration: 0.8,
+                ease: "power2.in"
+            }, 3);
+
+            tl.to(".letter-content", {
+                opacity: 1,
+                duration: 0.8,
+                ease: "power2.out"
+            }, 3.2);
+
+            // Content Reveal Animations
+            gsap.utils.toArray('.reveal-content').forEach((section, index) => {
+                gsap.set(section, { opacity: 0, y: 60 });
+
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: "top 80%",
+                    onEnter: () => {
+                        gsap.to(section, {
+                            opacity: 1,
+                            y: 0,
+                            duration: 1.2,
+                            ease: "power3.out"
+                        });
+                    }
+                });
+            });
+
+            // Zoom In/Out Animations for Each Section
+            gsap.utils.toArray('.zoom-section').forEach((section, index) => {
+                // Initial state - slightly zoomed out
+                gsap.set(section, { scale: 0.95 });
+
+                // Zoom in when entering viewport
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: "top 80%",
+                    end: "top 20%",
+                    scrub: 1,
+                    onUpdate: (self) => {
+                        const progress = self.progress;
+                        // Zoom from 0.95 to 1.05 as it enters
+                        const scale = 0.95 + (progress * 0.1);
+                        gsap.to(section, {
+                            scale: scale,
+                            duration: 0.1,
+                            ease: "none"
+                        });
+                    }
+                });
+
+                // Zoom out when leaving viewport
+                ScrollTrigger.create({
+                    trigger: section,
+                    start: "bottom 80%",
+                    end: "bottom 20%",
+                    scrub: 1,
+                    onUpdate: (self) => {
+                        const progress = self.progress;
+                        // Zoom from 1.05 to 0.95 as it leaves
+                        const scale = 1.05 - (progress * 0.1);
+                        gsap.to(section, {
+                            scale: scale,
+                            duration: 0.1,
+                            ease: "none"
+                        });
+                    }
+                });
+            });
+
+            // Timeline Dots Animation
+            gsap.utils.toArray('.timeline-dot').forEach((dot, index) => {
+                gsap.set(dot, { scale: 0 });
+
+                ScrollTrigger.create({
+                    trigger: dot,
+                    start: "top 70%",
+                    onEnter: () => {
+                        gsap.to(dot, {
+                            scale: 1,
+                            duration: 0.6,
+                            ease: "back.out(1.7)",
+                            delay: index * 0.1
+                        });
+                    }
+                });
+            });
+
+            // Polaroid Cards Hover Effect Enhancement
+            document.querySelectorAll('.polaroid-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    gsap.to(card, {
+                        y: -10,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card, {
+                        y: 0,
+                        duration: 0.3,
+                        ease: "power2.out"
+                    });
+                });
+            });
+
+            // Valentine Question Interactive Buttons - Enhanced Bubble Effect
+            const yesButton = document.getElementById('yes-button');
+            const noButton = document.getElementById('no-button');
+            const celebrationMessage = document.getElementById('celebration-message');
+            const buttonContainer = document.querySelector('.button-container');
+
+            // Create audio context for celebration sound
+            let audioContext;
+
+            function initAudioContext() {
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+            }
+
+            // Function to play celebration sound using Web Audio API
+            function playCelebrationSound() {
+                initAudioContext();
+
+                // Create a simple melody for celebration
+                const notes = [
+                    { frequency: 523.25, duration: 0.15 }, // C5
+                    { frequency: 659.25, duration: 0.15 }, // E5
+                    { frequency: 783.99, duration: 0.15 }, // G5
+                    { frequency: 1046.50, duration: 0.3 }  // C6
+                ];
+
+                let startTime = audioContext.currentTime;
+
+                notes.forEach((note, index) => {
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+
+                    oscillator.frequency.value = note.frequency;
+                    oscillator.type = 'sine';
+
+                    gainNode.gain.setValueAtTime(0.3, startTime);
+                    gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + note.duration);
+
+                    oscillator.start(startTime);
+                    oscillator.stop(startTime + note.duration);
+
+                    startTime += note.duration;
+                });
+            }
+
+            // Function to play bubble burst sound
+            function playBurstSound() {
+                initAudioContext();
+
+                // Create burst sound effect (pop/explosion)
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                const filter = audioContext.createBiquadFilter();
+
+                oscillator.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+
+                // Sharp burst sound
+                oscillator.frequency.setValueAtTime(150, audioContext.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(50, audioContext.currentTime + 0.1);
+
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(2000, audioContext.currentTime);
+                filter.frequency.exponentialRampToValueAtTime(100, audioContext.currentTime + 0.1);
+
+                gainNode.gain.setValueAtTime(0.5, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
+
+                oscillator.start(audioContext.currentTime);
+                oscillator.stop(audioContext.currentTime + 0.05);
+
+                // Add white noise for realistic pop
+                const bufferSize = audioContext.sampleRate * 0.05;
+                const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+                const data = buffer.getChannelData(0);
+
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = Math.random() * 2 - 1;
+                }
+
+                const noise = audioContext.createBufferSource();
+                const noiseGain = audioContext.createGain();
+                const noiseFilter = audioContext.createBiquadFilter();
+
+                noise.buffer = buffer;
+                noise.connect(noiseFilter);
+                noiseFilter.connect(noiseGain);
+                noiseGain.connect(audioContext.destination);
+
+                noiseFilter.type = 'highpass';
+                noiseFilter.frequency.value = 1000;
+
+                noiseGain.gain.setValueAtTime(0.3, audioContext.currentTime);
+                noiseGain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
+
+                noise.start(audioContext.currentTime);
+                noise.stop(audioContext.currentTime + 0.05);
+            }
+
+            // Function to trigger confetti explosion
+            function triggerConfetti() {
+                // Multiple confetti bursts for dramatic effect
+                const duration = 3000;
+                const animationEnd = Date.now() + duration;
+                const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+
+                function randomInRange(min, max) {
+                    return Math.random() * (max - min) + min;
+                }
+
+                const interval = setInterval(function () {
+                    const timeLeft = animationEnd - Date.now();
+
+                    if (timeLeft <= 0) {
+                        return clearInterval(interval);
+                    }
+
+                    const particleCount = 50 * (timeLeft / duration);
+                    const particleCount2 = 50 * (timeLeft / duration);
+
+                    // Launch confetti from different positions
+                    confetti({
+                        ...defaults,
+                        particleCount,
+                        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+                        colors: ['#FFE5E5', '#8B1538', '#FFF8F0', '#FF69B4', '#FF1493']
+                    });
+
+                    confetti({
+                        ...defaults,
+                        particleCount,
+                        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+                        colors: ['#FFE5E5', '#8B1538', '#FFF8F0', '#FF69B4', '#FF1493']
+                    });
+                }, 250);
+
+                // Heart-shaped confetti burst
+                confetti({
+                    particleCount: 100,
+                    spread: 160,
+                    origin: { y: 0.6 },
+                    colors: ['#FFE5E5', '#8B1538', '#FFF8F0', '#FF69B4', '#FF1493'],
+                    shapes: ['circle'],
+                    scalar: 1.2,
+                    zIndex: 9999
+                });
+            }
+
+            // Bubble expansion tracking
+            let noAttempts = 0;
+            const maxAttempts = 8; // Number of attempts before bubble bursts
+            let currentScale = 1;
+            let hasBurst = false;
+
+            // Function to expand Yes button like a bubble
+            function expandYesBubble() {
+                if (hasBurst) return;
+
+                noAttempts++;
+
+                // Calculate new scale - exponential growth
+                const scaleIncrement = 0.4 + (noAttempts * 0.15);
+                currentScale += scaleIncrement;
+
+                // Add pulsating effect
+                gsap.to(yesButton, {
+                    scale: currentScale,
+                    duration: 0.5,
+                    ease: "elastic.out(1, 0.5)",
+                    boxShadow: `0 0 ${20 + noAttempts * 10}px rgba(139, 21, 56, 0.${30 + noAttempts * 5})`
+                });
+
+                // Add subtle floating animation
+                gsap.to(yesButton, {
+                    y: Math.sin(noAttempts) * 10,
+                    duration: 1,
+                    ease: "sine.inOut",
+                    repeat: -1,
+                    yoyo: true
+                });
+
+                // Check if bubble should burst
+                if (noAttempts >= maxAttempts) {
+                    burstBubble();
+                }
+            }
+
+            // Function to burst the bubble and cover viewport
+            function burstBubble() {
+                hasBurst = true;
+
+                // Get viewport dimensions
+                const vw = window.innerWidth;
+                const vh = window.innerHeight;
+
+                // Calculate scale needed to cover viewport
+                const buttonRect = yesButton.getBoundingClientRect();
+                const scaleX = vw / buttonRect.width;
+                const scaleY = vh / buttonRect.height;
+                const finalScale = Math.max(scaleX, scaleY) * 1.5;
+
+                // Position button at center of viewport
+                const buttonCenterX = buttonRect.left + buttonRect.width / 2;
+                const buttonCenterY = buttonRect.top + buttonRect.height / 2;
+                const viewportCenterX = vw / 2;
+                const viewportCenterY = vh / 2;
+                const translateX = viewportCenterX - buttonCenterX;
+                const translateY = viewportCenterY - buttonCenterY;
+
+                // Make button fixed and bring to front (but below No button)
+                yesButton.style.position = 'fixed';
+                yesButton.style.zIndex = '9999';
+                yesButton.style.left = `${buttonCenterX}px`;
+                yesButton.style.top = `${buttonCenterY}px`;
+                yesButton.style.transform = 'translate(-50%, -50%)';
+
+                // Animate to fill viewport
+                gsap.to(yesButton, {
+                    scale: finalScale,
+                    x: translateX,
+                    y: translateY,
+                    duration: 1,
+                    ease: "power2.inOut",
+                    borderRadius: '0%',
+                    onUpdate: function () {
+                        // Create ripple effect during expansion
+                        if (this.progress() < 0.8) {
+                            yesButton.style.boxShadow = `0 0 ${100 * this.progress()}px rgba(139, 21, 56, ${0.8 - this.progress() * 0.5})`;
+                        }
+                    },
+                    onComplete: () => {
+                        // NOW hide No button before triggering burst effect
+                        gsap.to(noButton, {
+                            opacity: 0,
+                            scale: 0,
+                            duration: 0.3,
+                            ease: "back.in(2)",
+                            onComplete: () => {
+                                // Trigger burst effect after No button is hidden
+                                triggerBurstEffect();
+                            }
+                        });
+                    }
+                });
+
+                // Play burst sound
+                playBurstSound();
+            }
+
+            // Function to trigger burst effect
+            function triggerBurstEffect() {
+                // Create particle burst effect
+                const particleCount = 50;
+                const particles = [];
+
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.style.position = 'fixed';
+                    particle.style.width = '20px';
+                    particle.style.height = '20px';
+                    particle.style.borderRadius = '50%';
+                    particle.style.backgroundColor = ['#FFE5E5', '#8B1538', '#FFF8F0', '#FF69B4'][Math.floor(Math.random() * 4)];
+                    particle.style.left = '50%';
+                    particle.style.top = '50%';
+                    particle.style.zIndex = '10001';
+                    particle.style.pointerEvents = 'none';
+                    document.body.appendChild(particle);
+                    particles.push(particle);
+
+                    // Animate particle outward
+                    const angle = (Math.PI * 2 * i) / particleCount;
+                    const distance = window.innerWidth;
+                    const tx = Math.cos(angle) * distance;
+                    const ty = Math.sin(angle) * distance;
+
+                    gsap.to(particle, {
+                        x: tx,
+                        y: ty,
+                        opacity: 0,
+                        scale: Math.random() * 2 + 1,
+                        duration: 1.5,
+                        ease: "power2.out",
+                        onComplete: () => {
+                            particle.remove();
+                        }
+                    });
+                }
+
+                // Trigger confetti
+                triggerConfetti();
+
+                // Play celebration sound
+                playCelebrationSound();
+
+                // Fade out Yes button and show celebration
+                gsap.to(yesButton, {
+                    opacity: 0,
+                    duration: 0.8,
+                    delay: 0.5,
+                    onComplete: () => {
+                        yesButton.style.display = 'none';
+                        celebrationMessage.classList.remove('hidden');
+                        celebrationMessage.style.position = 'fixed';
+                        celebrationMessage.style.top = '50%';
+                        celebrationMessage.style.left = '50%';
+                        celebrationMessage.style.transform = 'translate(-50%, -50%)';
+                        celebrationMessage.style.zIndex = '10002';
+
+                        gsap.from(celebrationMessage, {
+                            scale: 0,
+                            opacity: 0,
+                            duration: 0.8,
+                            ease: "back.out(1.7)"
+                        });
+                    }
+                });
+            }
+
+            // Yes button direct click handler
+            yesButton.addEventListener('click', () => {
+                if (!hasBurst) {
+                    // If clicked before burst, trigger burst immediately
+                    noAttempts = maxAttempts;
+                    burstBubble();
+                }
+            });
+
+            // No button movement logic with bubble expansion
+            let moveAttempts = 0;
+
+            function moveNoButton() {
+                moveAttempts++;
+
+                // Expand Yes button bubble
+                expandYesBubble();
+
+                // Get button container dimensions
+                const containerRect = buttonContainer.getBoundingClientRect();
+                const buttonRect = noButton.getBoundingClientRect();
+
+                // Calculate viewport-relative movement for mobile responsiveness
+                const vw = window.innerWidth;
+                const vh = window.innerHeight;
+                const isMobile = vw < 640;
+
+                let newX, newY;
+
+                // Make it increasingly harder to catch after multiple attempts
+                // Use viewport-relative movement for better mobile experience
+                const movementRange = isMobile
+                    ? Math.min(vw * 0.4 + (moveAttempts * (vw * 0.05)), vw * 0.9)
+                    : Math.min(vw * 0.3 + (moveAttempts * (vw * 0.05)), vw * 0.8);
+
+                do {
+                    newX = Math.random() * movementRange - movementRange / 2;
+                    newY = isMobile
+                        ? Math.random() * (vh * 0.2) - (vh * 0.1)
+                        : Math.random() * (vh * 0.15) - (vh * 0.075);
+                } while (Math.abs(newX) < (isMobile ? 30 : 50) && Math.abs(newY) < (isMobile ? 20 : 30)); // Ensure it moves far enough
+
+                // Apply random position using GSAP for smooth animation
+                gsap.to(noButton, {
+                    x: newX,
+                    y: newY,
+                    duration: 0.3,
+                    ease: "power2.out",
+                    rotation: Math.random() * 20 - 10
+                });
+
+                // Change button text based on attempts
+                if (noAttempts >= maxAttempts - 1) {
+                    noButton.textContent = "Too late! 💥";
+                } else if (moveAttempts > 10) {
+                    noButton.textContent = "Still no! 😜";
+                } else if (moveAttempts > 5) {
+                    noButton.textContent = "Nice try! 😏";
+                }
+            }
+
+            // Handle window resize for responsive button positioning
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    if (window.innerWidth >= 640 && noButton.style.position !== 'fixed') {
+                        noButton.style.position = 'absolute';
+                        noButton.style.left = '50%';
+                        noButton.style.top = 'auto';
+                        noButton.style.bottom = '0';
+                        noButton.style.transform = 'translateX(-50%)';
+                    } else if (window.innerWidth < 640) {
+                        noButton.style.position = 'relative';
+                        noButton.style.left = 'auto';
+                        noButton.style.top = 'auto';
+                        noButton.style.bottom = 'auto';
+                        noButton.style.transform = 'none';
+                        gsap.set(noButton, { x: 0, y: 0, rotation: 0 });
+                    }
+                }, 100);
+            });
+
+            // No button hover handler - expands Yes button
+            noButton.addEventListener('mouseenter', moveNoButton);
+
+            // No button click handler - also expands Yes button
+            noButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                moveNoButton();
+            });
+
+            // Reduced Motion Fallback
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                gsap.set('.floating-heart', { animation: 'none' });
+                gsap.set('.reveal-content', { opacity: 1, y: 0 });
+            }
+
+            // Parallax Scrolling Effects - Depth-based movement
+            // Background layers move slower (creating depth)
+            gsap.utils.toArray('.parallax-bg').forEach((element) => {
+                const speed = element.dataset.speed || 0.2;
+                gsap.to(element, {
+                    y: () => window.innerHeight * speed,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+            });
+
+            // Floating hearts parallax (different speeds for depth)
+            gsap.utils.toArray('.parallax-layer').forEach((element) => {
+                const speed = parseFloat(element.dataset.speed) || 0.5;
+                gsap.to(element, {
+                    y: () => -(window.innerHeight * speed),
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: "body",
+                        start: "top top",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+            });
+
+            // Timeline line parallax (subtle movement)
+            gsap.utils.toArray('.parallax-line').forEach((element) => {
+                const speed = parseFloat(element.dataset.speed) || 0.15;
+                gsap.to(element, {
+                    y: () => window.innerHeight * speed,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+            });
+
+            // Timeline dots parallax (moderate movement)
+            gsap.utils.toArray('.parallax-dot').forEach((element) => {
+                const speed = parseFloat(element.dataset.speed) || 0.25;
+                gsap.to(element, {
+                    y: () => -(window.innerHeight * speed * 0.3),
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+            });
+
+            // Decorative elements parallax (faster movement for foreground feel)
+            gsap.utils.toArray('.parallax-decoration').forEach((element) => {
+                const speed = parseFloat(element.dataset.speed) || 0.7;
+                gsap.to(element, {
+                    y: () => -(window.innerHeight * speed * 0.2),
+                    x: () => Math.sin(speed * Math.PI) * 20,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: element,
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true
+                    }
+                });
+            });
+
+        </script>
+        <script id="dhws-dataInjector" src="/public/dhws-data-injector.js"></script>
+</body>
+
+</html>
