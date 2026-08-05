@@ -1,82 +1,44 @@
-# HTML
+# For You 💕
 
-A modern HTML project utilizing Tailwind CSS for building responsive web applications with minimal setup.
+A mobile-first, single-flow "will you go out with me" mini-site. Five screens,
+each unlocking the next: an envelope to open, a handwritten letter, a swipeable
+carousel of reasons/memories, a short anticipation beat, and finally the
+question itself with a runaway "No" button and a confetti-filled "Yes".
 
-## 🚀 Features
+Plain HTML, CSS, and vanilla JavaScript — no build step, no framework, no
+backend. Open `index.html` in a browser, or serve the folder statically.
 
-- **HTML5** - Modern HTML structure with best practices
-- **Tailwind CSS** - Utility-first CSS framework for rapid UI development
-- **Custom Components** - Pre-built component classes for buttons and containers
-- **NPM Scripts** - Easy-to-use commands for development and building
-- **Responsive Design** - Mobile-first approach for all screen sizes
-
-## 📋 Prerequisites
-
-- Node.js (v12.x or higher)
-- npm or yarn
-
-## 🛠️ Installation
-
-1. Install dependencies:
-```bash
-npm install
-# or
-yarn install
-```
-
-2. Start the development server:
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-## 📁 Project Structure
+## Project structure
 
 ```
-html_app/
-├── css/
-│   ├── tailwind.css   # Tailwind source file with custom utilities
-│   └── main.css       # Compiled CSS (generated)
-├── pages/             # HTML pages
-├── index.html         # Main entry point
-├── package.json       # Project dependencies and scripts
-└── tailwind.config.js # Tailwind CSS configuration
+index.html        Markup for all 5 screens
+css/main.css       Palette, fonts, layout, and all animations
+js/app.js          Screen state machine + all interactivity
+public/assets/     Photos used in the memories carousel
+public/manifest.json
+public/favicon.svg
 ```
 
-## 🎨 Styling
+## Customize before sending
 
-This project uses Tailwind CSS for styling. Custom utility classes include:
+Everything you'd want to personalize is marked `EDIT ME` in `js/app.js`:
 
+- `MESSAGE_LINES` — the letter text on screen 2
+- `MEMORIES` — the reasons/memories carousel (text + photo per card)
+- `DATE_TEXT` — the day mentioned in the question
+- `YES_MESSAGE` — shown after she taps Yes
+- `DECLINE_MESSAGE` — auto-copied to the clipboard if she taps/gives up on No
 
-## 🧩 Customization
+## Run locally
 
-To customize the Tailwind configuration, edit the `tailwind.config.js` file:
-
-
-## 📦 Build for Production
-
-Build the CSS for production:
+Just open `index.html`, or serve it so relative paths behave the same as
+in production:
 
 ```bash
-npm run build:css
-# or
-yarn build:css
+npx serve .
 ```
 
-## 📱 Responsive Design
+## Deploy
 
-The app is built with responsive design using Tailwind CSS breakpoints:
-
-- `sm`: 640px and up
-- `md`: 768px and up
-- `lg`: 1024px and up
-- `xl`: 1280px and up
-- `2xl`: 1536px and up
-
-## 🙏 Acknowledgments
-
-- Built with [Rocket.new](https://rocket.new)
-- Powered by HTML and Tailwind CSS
-
-Built with ❤️ on Rocket.new
+Static site — deploy the repo root as-is to Netlify, GitHub Pages, Vercel, or
+any static host. No build command or output directory needed.
