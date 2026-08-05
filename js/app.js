@@ -63,11 +63,11 @@
   // Screen 2 — Letter reveal
   // ---------------------------------------------------------------------
 
-  // EDIT ME — your actual message to her. Each entry becomes its own
-  // line, revealed one at a time.
+  // Each entry becomes its own line, revealed one at a time.
   const MESSAGE_LINES = [
-    "Hey you,",
-    "[YOUR MESSAGE HERE — write what's actually on your heart]",
+    "Hey Ruby,",
+    "I don't say this enough, but you make even the most ordinary days feel like something worth smiling about.",
+    "Your laugh is my favorite sound, and somehow your smile has a way of showing up in my head at the worst possible times — like when I'm supposed to be focusing on literally anything else.",
     "There's something I've been wanting to ask you...",
     "Keep reading 👀",
   ];
@@ -92,15 +92,13 @@
   // Screen 3 — Memories carousel
   // ---------------------------------------------------------------------
 
-  // EDIT ME — swap text/images for your real memories. Set image to null
-  // to show a placeholder box instead.
   const MEMORIES = [
-    { text: "Reason #1 — the way you laugh at your own jokes", image: "public/assets/1.jpg" },
-    { text: "Reason #2 — [YOUR MEMORY HERE]", image: "public/assets/3.jpg" },
-    { text: "Reason #3 — [YOUR MEMORY HERE]", image: "public/assets/4.jpg" },
-    { text: "Reason #4 — [YOUR MEMORY HERE]", image: "public/assets/5.jpg" },
-    { text: "Reason #5 — [YOUR MEMORY HERE]", image: "public/assets/6.jpg" },
-    { text: "Reason #6 — [YOUR MEMORY HERE]", image: "public/assets/7.jpg" },
+    { text: "The way your eyes light up right before you laugh at your own joke", image: "public/assets/1.jpg" },
+    { text: "How you make me feel like the luckiest person just by texting back 'lol'", image: "public/assets/3.jpg" },
+    { text: "Your laugh — loud, unfiltered, and somehow my favorite sound in the world", image: "public/assets/4.jpg" },
+    { text: "How easy it is to just be myself around you, no filter needed", image: "public/assets/5.jpg" },
+    { text: "The way you care about people quietly, without ever needing credit for it", image: "public/assets/6.jpg" },
+    { text: "Simply put — you're the best thing that's happened to me in a long time", image: "public/assets/7.jpg" },
   ];
 
   let carActive = 0;
